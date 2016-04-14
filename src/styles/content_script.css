@@ -1,0 +1,51 @@
+.backdrop {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: 9999999999999998;
+  background: rgba(0,0,0,0.2);
+  display: none;
+}
+
+.main {
+  background: #222;
+  z-index: 9999999999999999;
+  display: none;
+  color: white;
+  box-shadow: 0 0 100px 30px rgba(0,0,0,0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 700px;
+  margin: 100px auto;
+  font-size: 14px !important;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  margin: 0 2px;
+  background: rgba(255,255,255,.2);
+}
+
+&*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,.5);
+}
+
+.innerWrap {
+  overflow: auto;
+  max-height: 80vh;
+}
+
+.shown {
+  display: block;
+}

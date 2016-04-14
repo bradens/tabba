@@ -1,0 +1,24 @@
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: thin solid #333;
+  list-style-type: none;
+  color: #aaa;
+}
+
+.selected {
+  border-left: 4px solid cornflowerblue;
+  color: white;
+  background: #333;
+}
+
+.active::after {
+  content: 'CURRENT';
+  background: cornflowerblue;
+  padding: 2px 5px;
+  font-size: 10px;
+  border-radius: 5px;
+  color: white;
+  margin-left: auto;
+}

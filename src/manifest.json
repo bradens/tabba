@@ -1,0 +1,21 @@
+{
+  "name": "Tabzy",
+  "options_page": "options.html",
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [
+    "tabs", "https://*/*", "http://*/*", "chrome://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*", "chrome://*/*"],
+      "js": ["content.bundle.js"]
+    }
+  ],
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
