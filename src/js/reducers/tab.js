@@ -51,7 +51,6 @@ export default function reduce(state = initial, action) {
         tabs = new Fuse(state.tabs, fuseOptions).search(action.term)
       else
         tabs = state.tabs
-
       tabs = activeTabToLast(tabs)
       return { ...state, query: action.term, filtered: tabs, selected: tabs[0]  }
     case RECEIVED_TABS:
