@@ -45,7 +45,6 @@ const activeTabToLast = (tabs) => {
 
 export default function reduce(state = initial, action) {
   let tabs
-  console.log(state, action)
   switch (action.type) {
     case QUERY:
       if (action.term.length)
