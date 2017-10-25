@@ -22,22 +22,22 @@
   font-size: 14px !important;
 }
 
-*::-webkit-scrollbar {
+.main *::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-*::-webkit-scrollbar-track {
+.main *::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
-*::-webkit-scrollbar-thumb {
+.main *::-webkit-scrollbar-thumb {
   border-radius: 10px;
   margin: 0 2px;
   background: rgba(255,255,255,.2);
 }
 
-&*::-webkit-scrollbar-thumb:hover {
+.main &*::-webkit-scrollbar-thumb:hover {
   background: rgba(255,255,255,.5);
 }
 
