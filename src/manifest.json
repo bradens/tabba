@@ -5,7 +5,7 @@
     "page": "background.html"
   },
   "permissions": [
-    "tabs", "https://*/*", "http://*/*"
+    "tabs", "https://*/*", "http://*/*", "storage"
   ],
   "content_scripts": [
     {

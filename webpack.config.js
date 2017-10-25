@@ -59,6 +59,7 @@ var options = {
   resolve: {
     alias: {
       'app': path.join(__dirname, 'src'),
+      'js': path.join(__dirname, 'src', 'js'),
       'styles': path.join(__dirname, 'src', 'styles'),
       'popup': path.join(__dirname, 'src', 'js', 'popup'),
       'actions': path.join(__dirname, 'src', 'js', 'actions'),

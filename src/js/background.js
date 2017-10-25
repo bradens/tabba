@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener(function(message, sender, callback) {
-  console.log("[onMessage]", message, sender)
+  console.debug("[onMessage]", message, sender)
 
   switch(message.type) {
     case 'getTabs':

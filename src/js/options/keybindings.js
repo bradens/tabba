@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import KeybindField from '../keybind_field'
 import { Field, reduxForm } from 'redux-form'
 
@@ -8,8 +9,24 @@ let KeybindingsForm = ({ handleSubmit }) => {
       <h2>Key bindings</h2>
       <form onSubmit={ handleSubmit }>
         <div>
-          <label htmlFor="toggle">Toggle Tabzy</label>
+          <label htmlFor="toggle">Toggle</label>
           <KeybindField name="toggle" />
+        </div>
+        <div>
+          <label htmlFor="hide">Hide</label>
+          <KeybindField name="hide" />
+        </div>
+        <div>
+          <label htmlFor="next">Next</label>
+          <KeybindField name="next" />
+        </div>
+        <div>
+          <label htmlFor="previous">Previous</label>
+          <KeybindField name="previous" />
+        </div>
+        <div>
+          <label htmlFor="close">Close Tab</label>
+          <KeybindField name="close" />
         </div>
         <button type='submit'>Save</button>
       </form>
@@ -18,7 +35,13 @@ let KeybindingsForm = ({ handleSubmit }) => {
 }
 
 KeybindingsForm = reduxForm({
-  form: 'options'
+  form: 'options',
 })(KeybindingsForm)
 
-export default KeybindingsForm
+export default connect(
+  (state, props) => {
+    return {
+      initialValues: { ...state.option.options }
+    }
+  }
+)(KeybindingsForm)

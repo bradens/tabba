@@ -14,15 +14,39 @@ import { connect } from 'react-redux'
 
 let cx = classnames.bind(MainStyle)
 
-const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, selectUp, closeSelected }) => {
+const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, selectUp, closeSelected, options }) => {
   const onKeyDown = (ev) => {
-    if (ev.ctrlKey && ev.nativeEvent.key === 'n') {
+    const matches = (command) => {
+      let sequence = options[command]
+      for (let key of sequence) {
+        switch (key) {
+          case 'ctrl':
+            if (!ev.ctrlKey) return false
+            break
+          case 'command':
+            if (!ev.metaKey) return false
+            break
+          case 'shift':
+            if (!ev.shiftKey) return false
+            break
+          case 'alt':
+            if (!ev.altKey) return false
+            break
+          default:
+            if (ev.key !== key) return false
+            break
+        }
+      }
+      return true
+    }
+
+    if (matches('next')) {
       selectDown()
       ev.stopPropagation()
-    } else if (ev.ctrlKey && ev.nativeEvent.key === 'p') {
+    } else if (matches('previous')) {
       selectUp()
       ev.stopPropagation()
-    } else if (ev.ctrlKey && ev.nativeEvent.key === 'q') {
+    } else if (matches('close')) {
       closeSelected(selected.id)
       ev.stopPropagation()
     } else if (ev.nativeEvent.key === 'Enter') {
@@ -34,7 +58,7 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
   const onKeyUp = (ev) => {
     if (ev.target.value !== currentQuery)
       query(ev.target.value.toLowerCase())
-  }
+    }
 
   return (
     <div className={cx({ backdrop: true, shown })}>
@@ -49,6 +73,11 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
 }
 
 export default connect(
-  state => ({ shown: state.window.shown, selected: state.tab.selected, currentQuery: state.tab.query }),
+  state => ({
+    shown: state.window.shown,
+    selected: state.tab.selected,
+    currentQuery: state.tab.query,
+    options: state.option.options,
+  }),
   { query, selectTab, selectDown, selectUp, closeSelected }
 )(Main)
