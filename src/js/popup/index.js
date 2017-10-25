@@ -56,8 +56,9 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
   }
 
   const onKeyUp = (ev) => {
-    if (ev.target.value !== currentQuery)
-      query(ev.target.value.toLowerCase())
+    let val = ev.target.value.toLowerCase()
+    if (val !== currentQuery)
+      query(val)
     }
 
   return (
