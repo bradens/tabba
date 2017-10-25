@@ -4,10 +4,11 @@ import {
   SELECT_TAB,
   SELECT_DOWN,
   SELECT_UP,
+  CLOSE_SELECTED,
 } from 'actions/tab'
 
 import Fuse from 'fuse.js'
-import { findIndex, sortBy } from 'lodash'
+import { findIndex, sortBy, remove } from 'lodash'
 
 let initial = {
   tabs: [],
@@ -63,6 +64,11 @@ export default function reduce(state = initial, action) {
       return { ...state, selected: getNextSelectedItem(state.filtered, state.selected) }
     case SELECT_UP:
       return { ...state, selected: getPreviousSelectedItem(state.filtered, state.selected) }
+    case CLOSE_SELECTED:
+      const selected = getNextSelectedItem(state.filtered, state.selected)
+      remove(state.tabs, (tab) => (tab.id === action.id))
+      remove(state.filtered, (tab) => (tab.id === action.id))
+      return { ...state, selected }
     default:
       return state
   }

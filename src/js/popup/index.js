@@ -3,18 +3,27 @@ import React from 'react'
 import classnames from 'classnames/bind'
 import Tablist from './tab_list'
 import Search from './search'
-import { query, selectTab, selectDown, selectUp } from 'actions/tab'
+import {
+  query,
+  selectTab,
+  selectDown,
+  selectUp,
+  closeSelected
+} from 'actions/tab'
 import { connect } from 'react-redux'
 
 let cx = classnames.bind(MainStyle)
 
-const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, selectUp }) => {
+const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, selectUp, closeSelected }) => {
   const onKeyDown = (ev) => {
     if (ev.ctrlKey && ev.nativeEvent.key === 'n') {
       selectDown()
       ev.stopPropagation()
     } else if (ev.ctrlKey && ev.nativeEvent.key === 'p') {
       selectUp()
+      ev.stopPropagation()
+    } else if (ev.ctrlKey && ev.nativeEvent.key === 'q') {
+      closeSelected(selected.id)
       ev.stopPropagation()
     } else if (ev.nativeEvent.key === 'Enter') {
       selectTab(selected.id)
@@ -41,5 +50,5 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
 
 export default connect(
   state => ({ shown: state.window.shown, selected: state.tab.selected, currentQuery: state.tab.query }),
-  { query, selectTab, selectDown, selectUp }
+  { query, selectTab, selectDown, selectUp, closeSelected }
 )(Main)
