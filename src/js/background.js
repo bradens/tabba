@@ -3,12 +3,12 @@ chrome.runtime.onMessage.addListener(function(message, sender, callback) {
 
   switch(message.type) {
     case 'getTabs':
-      chrome.tabs.query({ currentWindow: true }, tabs => {
+      return chrome.tabs.query({ currentWindow: true }, tabs => {
         chrome.tabs.sendMessage(sender.tab.id, { type: 'receivedTabs', tabs })
       })
     case 'selectTab':
-      chrome.tabs.update(message.id, {active: true})
+      return chrome.tabs.update(message.id, {active: true})
     case 'closeTab':
-      chrome.tabs.remove(message.id)
+      return chrome.tabs.remove(message.id)
   }
 })
