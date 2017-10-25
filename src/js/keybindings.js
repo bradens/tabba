@@ -3,6 +3,6 @@ import Keyboard from 'keyboardjs'
 import { toggle, hide } from 'actions/window'
 
 export function init ({ dispatch }) {
-  Keyboard.bind('command + .', () => dispatch(toggle()))
+  Keyboard.bind('ctrl + .', () => dispatch(toggle()))
   Keyboard.bind('esc', () => dispatch(hide()))
 }
