@@ -13,13 +13,13 @@ let store = createStore()
 chrome.extension.connect(null, {})
 store.dispatch(getOptions(() => init(store)))
 
-root.setAttribute('id', '__tabzy__root__')
+root.setAttribute('id', '__tabba_root__')
 document.body.appendChild(root)
 
 ReactDOM.render(
   <Provider store={store}>
     <Main />
-  </Provider>, document.getElementById('__tabzy__root__')
+  </Provider>, document.getElementById('__tabba_root__')
 )
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {

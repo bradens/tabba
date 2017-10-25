@@ -6,7 +6,8 @@ import createStore from './store'
 import Main from './options/index'
 import { Provider } from 'react-redux'
 import { getOptions } from 'actions/option'
-let root = document.getElementById('tabzy-options-root')
+
+let root = document.getElementById('tabba-options-root')
 let store = createStore()
 
 store.dispatch(getOptions())
