@@ -23,6 +23,6 @@ ReactDOM.render(
 )
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  console.log('[Extension/onMessage]', message, sender)
+  // console.log('[Extension/onMessage]', message, sender)
   store.dispatch(receivedTabs(message.tabs))
 });
