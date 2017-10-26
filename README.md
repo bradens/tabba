@@ -1,5 +1,7 @@
 # Tabba
 
+![screen](assets/screen.gif)
+
 ### Develop
 
 #### Requirements
