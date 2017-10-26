@@ -3,8 +3,15 @@
   align-items: center;
   padding: 10px;
   border-top: thin solid #333;
+  border-left: 4px solid transparent;
   list-style-type: none;
   color: #aaa;
+}
+
+.favicon {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
 }
 
 .selected {
