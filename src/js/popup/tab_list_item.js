@@ -8,7 +8,8 @@ const TabListItem = ({ tab, selected, active, onClick }) => {
   return (
     <li onClick={() => onClick(tab.id)} className={cx({ tab: true, active: tab.active, selected })}>
       <img className={styles.favicon} src={tab.favIconUrl} />
-      { tab.title }
+      <span className={styles.url}>{ (new URL(tab.url)).hostname }</span>
+      <span>{ tab.title }</span>
     </li>
   )
 }

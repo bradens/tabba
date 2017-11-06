@@ -43,15 +43,19 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
     if (matches('next')) {
       selectDown()
       ev.stopPropagation()
+      ev.preventDefault()
     } else if (matches('previous')) {
       selectUp()
       ev.stopPropagation()
+      ev.preventDefault()
     } else if (matches('close')) {
       closeSelected(selected.id)
       ev.stopPropagation()
+      ev.preventDefault()
     } else if (ev.nativeEvent.key === 'Enter') {
       selectTab(selected.id)
       ev.stopPropagation()
+      ev.preventDefault()
     }
   }
 

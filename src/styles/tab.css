@@ -12,6 +12,16 @@
   height: 20px;
   width: 20px;
   margin-right: 10px;
+  overflow: hidden;
+}
+
+.url {
+  color: #888;
+}
+
+.url::after {
+  content: '-';
+  margin: 0 5px;
 }
 
 .selected {

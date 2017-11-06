@@ -72,6 +72,11 @@ var options = {
       "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV)
     }),
     new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src", "popup.html"),
+      filename: "popup.html",
+      chunks: ["popup"]
+    }),
+    new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "options.html"),
       filename: "options.html",
       chunks: ["options"]
