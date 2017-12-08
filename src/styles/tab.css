@@ -6,12 +6,26 @@
   border-left: 4px solid transparent;
   list-style-type: none;
   color: #aaa;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .favicon {
   height: 20px;
   width: 20px;
   margin-right: 10px;
+  overflow: hidden;
+}
+
+.url {
+  color: #888;
+}
+
+.url::after {
+  content: '-';
+  margin: 0 5px;
 }
 
 .selected {

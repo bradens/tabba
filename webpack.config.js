@@ -19,12 +19,9 @@ if (fileSystem.existsSync(secretsPath)) {
 var options = {
   devtool: 'source-map',
   entry: {
-    content: path.join(__dirname, "src", "js", "content_script.js"),
+    popup: path.join(__dirname, "src", "js", "popup.js"),
     options: path.join(__dirname, "src", "js", "options.js"),
     background: path.join(__dirname, "src", "js", "background.js")
-  },
-  chromeExtensionBoilerplate: {
-    notHotReload: ["content_script"]
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -70,6 +67,11 @@ var options = {
     // expose and write the allowed env vars on the compiled bundle
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV)
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src", "popup.html"),
+      filename: "popup.html",
+      chunks: ["popup"]
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "options.html"),

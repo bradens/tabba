@@ -1,5 +1,9 @@
 @import "system-font-css";
 
+body {
+  margin: 0;
+}
+
 .backdrop {
   top: 0;
   bottom: 0;
@@ -19,8 +23,7 @@
   box-shadow: 0 0 100px 30px rgba(0,0,0,0.3);
   border-radius: 4px;
   overflow: hidden;
-  max-width: 700px;
-  margin: 100px auto;
+  width: 500px;
   font-size: 14px !important;
   font-family: system-ui, sans-serif;
 }
@@ -46,7 +49,6 @@
 
 .innerWrap {
   overflow: auto;
-  max-height: 80vh;
 }
 
 .shown {

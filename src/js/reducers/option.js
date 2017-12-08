@@ -8,7 +8,7 @@ import {
 let initialState = {
   loadingOptions: true,
   options: {
-    toggle: ['command', '.'],
+    select: ['Enter'],
     next: ['ctrl', 'n'],
     previous: ['ctrl', 'p'],
     hide: ['esc'],

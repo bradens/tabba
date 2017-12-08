@@ -15,6 +15,13 @@ import { connect } from 'react-redux'
 let cx = classnames.bind(MainStyle)
 
 const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, selectUp, closeSelected, options }) => {
+  let commands = {
+    'next': selectDown,
+    'previous': selectUp,
+    'close': closeSelected,
+    'select': selectTab
+  }
+
   const onKeyDown = (ev) => {
     const matches = (command) => {
       let sequence = options[command]
@@ -40,18 +47,12 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
       return true
     }
 
-    if (matches('next')) {
-      selectDown()
-      ev.stopPropagation()
-    } else if (matches('previous')) {
-      selectUp()
-      ev.stopPropagation()
-    } else if (matches('close')) {
-      closeSelected(selected.id)
-      ev.stopPropagation()
-    } else if (ev.nativeEvent.key === 'Enter') {
-      selectTab(selected.id)
-      ev.stopPropagation()
+    for (let key of Object.keys(commands)) {
+      if (matches(key)) {
+        commands[key](selected.id)
+        ev.stopPropagation()
+        ev.preventDefault()
+      }
     }
   }
 
@@ -59,15 +60,13 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
     let val = ev.target.value.toLowerCase()
     if (val !== currentQuery)
       query(val)
-    }
+  }
 
   return (
-    <div className={cx({ backdrop: true, shown })}>
-      <div className={cx({ main: true, shown })}>
-        <div className={MainStyle.innerWrap}>
-          { shown && <Search onKeyUp={onKeyUp} onKeyDown={onKeyDown} /> }
-          <Tablist />
-        </div>
+    <div className={cx({ main: true, shown })}>
+      <div className={MainStyle.innerWrap}>
+        { shown && <Search onKeyUp={onKeyUp} onKeyDown={onKeyDown} /> }
+        <Tablist />
       </div>
     </div>
   )
