@@ -17,6 +17,7 @@
   width: 20px;
   margin-right: 10px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .url {
