@@ -36,7 +36,6 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
-    "reactotron-react-js": "^1.12.2",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-form": "^7.1.1",

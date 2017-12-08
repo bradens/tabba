@@ -20,13 +20,9 @@ var options = {
   devtool: 'source-map',
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
-    // content: path.join(__dirname, "src", "js", "content_script.js"),
     options: path.join(__dirname, "src", "js", "options.js"),
     background: path.join(__dirname, "src", "js", "background.js")
   },
-  // chromeExtensionBoilerplate: {
-  //   notHotReload: ["content_script"]
-  // },
   output: {
     path: path.join(__dirname, "build"),
     filename: "[name].bundle.js"
