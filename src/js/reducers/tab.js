@@ -7,6 +7,8 @@ import {
   CLOSE_SELECTED,
 } from 'actions/tab'
 
+import find from 'lodash/find'
+import get from 'lodash/get'
 import Fuse from 'fuse.js'
 import { findIndex, sortBy, remove } from 'lodash'
 
@@ -53,7 +55,7 @@ export default function reduce(state = initial, action) {
       else
         tabs = state.tabs
       tabs = activeTabToLast(tabs)
-      return { ...state, query: action.term, filtered: tabs, selected: tabs[0]  }
+      return { ...state, query: action.term, filtered: tabs, selected: find(tabs, t => t.id === get(state.selected, 'id')) || tabs[0]  }
     case RECEIVED_TABS:
       tabs = state.query ? new Fuse(action.tabs, fuseOptions).search(state.query) : action.tabs
       tabs = activeTabToLast(tabs)

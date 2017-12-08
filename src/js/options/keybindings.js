@@ -9,8 +9,8 @@ let KeybindingsForm = ({ handleSubmit }) => {
       <h2>Key bindings</h2>
       <form onSubmit={ handleSubmit }>
         <div>
-          <label htmlFor="toggle">Toggle</label>
-          <KeybindField name="toggle" />
+          <label htmlFor="select">Select</label>
+          <KeybindField name="select" />
         </div>
         <div>
           <label htmlFor="hide">Hide</label>

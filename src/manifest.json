@@ -5,13 +5,7 @@
     "page": "background.html"
   },
   "permissions": [
-    "tabs", "https://*/*", "http://*/*", "storage"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["https://*/*", "http://*/*"],
-      "js": ["content.bundle.js"]
-    }
+    "tabs", "https://*/*", "http://*/*", "storage", "commands"
   ],
   "browser_action": {
     "default_popup": "popup.html",
@@ -19,6 +13,14 @@
   },
   "icons": {
     "128": "icon-128.png"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Period",
+        "mac": "MacCtrl+Period"
+      }
+    }
   },
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"

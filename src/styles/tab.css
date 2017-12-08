@@ -6,6 +6,10 @@
   border-left: 4px solid transparent;
   list-style-type: none;
   color: #aaa;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .favicon {

@@ -1,17 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Main from './popup/index'
+import icons from './icons'
 import { Provider } from 'react-redux'
-import { init } from './keybindings'
 import { receivedTabs } from 'actions/tab'
 import { getOptions } from 'actions/option'
 import createStore from './store'
+import { toggle as doToggle, hide as doHide } from 'actions/window'
 
 let root = document.createElement('div')
 let store = createStore()
-
-chrome.extension.connect(null, {})
-store.dispatch(getOptions(() => init(store)))
 
 root.setAttribute('id', '__tabba_root__')
 document.body.appendChild(root)
@@ -23,6 +21,7 @@ ReactDOM.render(
 )
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  // console.log('[Extension/onMessage]', message, sender)
   store.dispatch(receivedTabs(message.tabs))
 });
+
+store.dispatch(doToggle())
