@@ -47,7 +47,7 @@ const activeTabToLast = (tabs) => {
 }
 
 export default function reduce(state = initial, action) {
-  let tabs
+  let tabs, selected
   switch (action.type) {
     case QUERY:
       if (action.term.length)
@@ -55,7 +55,8 @@ export default function reduce(state = initial, action) {
       else
         tabs = state.tabs
       tabs = activeTabToLast(tabs)
-      return { ...state, query: action.term, filtered: tabs, selected: find(tabs, t => t.id === get(state.selected, 'id')) || tabs[0]  }
+      selected = action.term.length ? tabs[0] : find(tabs, t => t.id === get(state.selected, 'id'))
+      return { ...state, query: action.term, filtered: tabs, selected }
     case RECEIVED_TABS:
       tabs = state.query ? new Fuse(action.tabs, fuseOptions).search(state.query) : action.tabs
       tabs = activeTabToLast(tabs)
@@ -67,7 +68,7 @@ export default function reduce(state = initial, action) {
     case SELECT_UP:
       return { ...state, selected: getPreviousSelectedItem(state.filtered, state.selected) }
     case CLOSE_SELECTED:
-      const selected = getNextSelectedItem(state.filtered, state.selected)
+      selected = getNextSelectedItem(state.filtered, state.selected)
       remove(state.tabs, (tab) => (tab.id === action.id))
       remove(state.filtered, (tab) => (tab.id === action.id))
       return { ...state, selected }
