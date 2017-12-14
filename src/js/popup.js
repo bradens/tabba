@@ -11,6 +11,9 @@ import { toggle as doToggle, hide as doHide } from 'actions/window'
 let root = document.createElement('div')
 let store = createStore()
 
+// Initialize options
+store.dispatch(getOptions())
+
 root.setAttribute('id', '__tabba_root__')
 document.body.appendChild(root)
 
