@@ -16,9 +16,9 @@ body {
 }
 
 .main {
+  display: block;
   background: #222;
   z-index: 9999999999999999;
-  display: none;
   color: white;
   box-shadow: 0 0 100px 30px rgba(0,0,0,0.3);
   border-radius: 4px;
@@ -49,8 +49,4 @@ body {
 
 .innerWrap {
   overflow: auto;
-}
-
-.shown {
-  display: block;
 }

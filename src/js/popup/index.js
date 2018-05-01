@@ -1,4 +1,4 @@
-import MainStyle from 'styles/content_script.css'
+import MainStyle from 'styles/main.css'
 import React from 'react'
 import classnames from 'classnames/bind'
 import Tablist from './tab_list'
@@ -12,9 +12,9 @@ import {
 } from 'actions/tab'
 import { connect } from 'react-redux'
 
-let cx = classnames.bind(MainStyle)
+const cx = classnames.bind(MainStyle)
 
-const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, selectUp, closeSelected, options }) => {
+const Main = ({ query, currentQuery, selected, selectTab, selectDown, selectUp, closeSelected, options }) => {
   let commands = {
     'next': selectDown,
     'previous': selectUp,
@@ -63,9 +63,9 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
   }
 
   return (
-    <div className={cx({ main: true, shown })}>
-      <div className={MainStyle.innerWrap}>
-        { shown && <Search onKeyUp={onKeyUp} onKeyDown={onKeyDown} /> }
+    <div className={cx({ main: true })}>
+      <div>
+        <Search onKeyUp={onKeyUp} onKeyDown={onKeyDown} />
         <Tablist />
       </div>
     </div>
@@ -74,7 +74,6 @@ const Main = ({ shown, query, currentQuery, selected, selectTab, selectDown, sel
 
 export default connect(
   state => ({
-    shown: state.window.shown,
     selected: state.tab.selected,
     currentQuery: state.tab.query,
     options: state.option.options,

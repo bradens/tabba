@@ -4,6 +4,7 @@ export const SELECT_TAB = 'SELECT_TAB'
 export const SELECT_DOWN = 'SELECT_DOWN'
 export const SELECT_UP = 'SELECT_UP'
 export const CLOSE_SELECTED = 'CLOSE_SELECTED'
+export const GET_TABS = 'GET_TABS'
 
 export function receivedTabs (tabs) {
   return {
@@ -32,6 +33,11 @@ export function selectDown () {
 
 export function selectUp () {
   return { type: SELECT_UP }
+}
+
+export function getTabs () {
+  chrome.runtime.sendMessage({ type: 'getTabs' })
+  return { type: GET_TABS }
 }
 
 export function closeSelected (id) {
