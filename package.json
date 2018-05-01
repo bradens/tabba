@@ -1,6 +1,6 @@
 {
   "name": "Tabba",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A chrome extension to help you navigate your tabs.",
   "scripts": {
     "build": "node utils/build.js",
